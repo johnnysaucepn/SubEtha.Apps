@@ -17,7 +17,6 @@
     <PackageOutputPath>$(BuildOutputPath)\Packages\</PackageOutputPath>
   </PropertyGroup>
 
-
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)\..\LICENSE.md" Pack="true" Visible="true" PackagePath="">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

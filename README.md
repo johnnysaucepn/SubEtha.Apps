@@ -1,36 +1,14 @@
 # README #
 
-## SubEtha for Elite: Dangerous
+## SubEtha Apps for Elite: Dangerous
 
-[![AppVeyor build status](https://img.shields.io/appveyor/ci/johnnysaucepn/subetha/master)](https://ci.appveyor.com/project/johnnysaucepn/subetha/branch/master)
-[![AppVeyor tests](https://img.shields.io/appveyor/tests/johnnysaucepn/subetha/master)](https://ci.appveyor.com/project/johnnysaucepn/subetha/build/tests?branch=master)
-[![Coverlet code coverage](https://img.shields.io/codecov/c/github/johnnysaucepn/SubEtha/master)](https://codecov.io/gh/johnnysaucepn/SubEtha)
+[![AppVeyor build status](https://img.shields.io/appveyor/ci/johnnysaucepn/subetha.apps/master)](https://ci.appveyor.com/project/johnnysaucepn/subetha.apps/branch/master)
+[![AppVeyor tests](https://img.shields.io/appveyor/tests/johnnysaucepn/subetha.apps/master)](https://ci.appveyor.com/project/johnnysaucepn/subetha.apps/build/tests?branch=master)
+[![Coverlet code coverage](https://img.shields.io/codecov/c/github/johnnysaucepn/SubEtha.Apps/master)](https://codecov.io/gh/johnnysaucepn/SubEtha.Apps)
 
-At its core, this is a set of .NET (Standard/Core) packages and tools for parsing and consuming Elite: Dangerous Player's Journal log events, allowing the creation of new tools for tracking player progress.
+This is a set of .NET Core apps that use the [![SubEtha libraries](https://github.com/johnnysaucepn/SubEtha)] for parsing and consuming Elite: Dangerous Player's Journal log events and key bindings.
 
-The intent is to free developers from the burden of maintaining repetitive parsing and processing
-code, particularly when new iterations of the journal spec are published.
-
-Layered upon this, there are standalone tools (called *Matrix* and *Assistant*) that illustrate the use of these packages and offers a re-usable architecture to add new capabilities - this should provide a starter kit for developing journal-based apps.
-
-These make use of a set of additional libraries (called *Thumb*) that offer some useful capabilities for getting started in making tools.
-
-### Howatworks.SubEtha.Journal
-
-This contains only C#-serializable representations of Elite: Dangerous journal entry types, as listed in the official documentation.
-No dependencies on any JSON-parsing library. Where there are discrepancies between the generated logs and the documentation, this is noted in the source.
-
-### Howatworks.SubEtha.Parser
-
-Taking a step up from the raw data types, this allows the creation of readers for individual log files (both the ongoing rolling files and the constantly-replaced files such as `status.json`) and the ability to retrieve the structured data types on demand.
-
-### Howatworks.SubEtha.Monitor
-
-This is a higher level again, providing a fully-operational file monitor that will track the core log files for updates, and trigger events that your application can process however it wishes.
-
-### Howatworks.SubEtha.Bindings
-
-This contains structured data types for the various game control bindings, and methods to access that information per device.
+These make use of a set of additional libraries (called *Howatworks.Thumb*) that offer some useful capabilities for getting started in making tools.
 
 ### Howatworks.Matrix and Howatworks.Assistant
 
@@ -44,11 +22,15 @@ These working applications use the libraries to illustrate some of the possibili
 
 ## Installation
 
-You can get started by consuming the [NuGet packages](https://www.nuget.org/packages?q=Howatworks.SubEtha) in your own projects, or by building and running the Thumb application in this repository. By default, Thumb makes use of both the sample plugins - see below for more details.
+Build and run the applications using Visual Studio 2019+, or at the command line using:
+```
+dotnet tool restore
+dotnet cake
+```
 
 ## Dependencies
 
-SubEtha and associated tools make use of the following libraries and applications:
+The SubEtha apps make use of the following libraries and applications:
 * log4net
 * Entity Framework Core and PostgreSQL for Matrix web site
 * ASP.NET Core for web service hosting
@@ -64,5 +46,7 @@ SubEtha and associated tools make use of the following libraries and application
   * First public release
 * 0.5
   * Rearchitected to use Reactive Extensions (Rx) to simplify data flow
+* 0.7
+  * Migrated to separate repository
   
 Distributed under the MIT license. See ``LICENSE.md`` for more information.

@@ -12,7 +12,6 @@ public class BuildData
     public DirectoryPath TestResultsDirectory;
     public DirectoryPath CoverageResultsDirectory;
     public DirectoryPath AppDirectory;
-    public DirectoryPath PackageDirectory;
     public DirectoryPath InstallerDirectory;
     public string Configuration;
     public int BuildNumber;
@@ -23,7 +22,6 @@ Setup<BuildData>(ctx => new BuildData()
         TestResultsDirectory = Directory(@"./.build/TestResults/"),
         CoverageResultsDirectory = Directory(@"./.build/CoverageResults/"),
         AppDirectory = Directory(@"./.build/PublishedApps/"),
-        PackageDirectory = Directory(@"./.build/Packages/"),
         InstallerDirectory = Directory(@"./.build/Installers/"),
         Configuration = "Release",
         BuildNumber = AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number : 0
@@ -32,11 +30,10 @@ Setup<BuildData>(ctx => new BuildData()
 Task("Build")
     .Does<BuildData>(data =>
     {
-    	CleanDirectory(data.PackageDirectory);
     	CleanDirectory(data.InstallerDirectory);
-    	
-        DotNetCoreBuild("src/SubEtha.sln", new DotNetCoreBuildSettings
-        { 
+
+        DotNetCoreBuild("src/SubEtha.Apps.sln", new DotNetCoreBuildSettings
+        {
             Configuration = data.Configuration,
             MSBuildSettings = new DotNetCoreMSBuildSettings
             {
@@ -51,7 +48,7 @@ Task("PublishApps")
         CleanDirectory(data.AppDirectory);
 
         var publishSettings = new DotNetCorePublishSettings
-        { 
+        {
             Configuration = data.Configuration,
             MSBuildSettings = new DotNetCoreMSBuildSettings
             {
@@ -62,22 +59,6 @@ Task("PublishApps")
         DotNetCorePublish("./src/Matrix/Howatworks.Matrix.Site/Howatworks.Matrix.Site.csproj", publishSettings);
         DotNetCorePublish("./src/Assistant/Howatworks.Assistant.Console/Howatworks.Assistant.Console.csproj", publishSettings);
         DotNetCorePublish("./src/Matrix/Howatworks.Matrix.Console/Howatworks.Matrix.Console.csproj", publishSettings);
-    });
-
-Task("NuGetPush")
-    .Does<BuildData>(data =>
-    {
-        if (!IsRunningOnWindows()) return;
-
-        var source = "https://www.nuget.org/api/v2/package";
-        var apiKey = Argument<string>("nugetapikey");
-
-        var pushSettings = new NuGetPushSettings {Source = source, ApiKey = apiKey};
-
-        // WARNING: this may publish more than we expect!
-        var packages = GetFiles($"{data.PackageDirectory}/Howatworks.*.nupkg");
-
-        NuGetPush(packages, pushSettings);
     });
 
 Task("Test")
@@ -114,7 +95,7 @@ Task("PublishCoverage")
         if (AppVeyor.IsRunningOnAppVeyor)
         {
             Codecov(new CodecovSettings
-            { 
+            {
                 Files = coverageFiles.Select(f => f.FullPath),
                 NoColor = true,
                 Required = true
