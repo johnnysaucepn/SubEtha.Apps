@@ -2,8 +2,8 @@
 
 ## SubEtha Apps for Elite: Dangerous
 
-[![AppVeyor build status](https://img.shields.io/appveyor/ci/johnnysaucepn/subetha.apps/master)](https://ci.appveyor.com/project/johnnysaucepn/subetha.apps/branch/master)
-[![AppVeyor tests](https://img.shields.io/appveyor/tests/johnnysaucepn/subetha.apps/master)](https://ci.appveyor.com/project/johnnysaucepn/subetha.apps/build/tests?branch=master)
+[![AppVeyor build status](https://img.shields.io/appveyor/ci/johnnysaucepn/subetha-apps/master)](https://ci.appveyor.com/project/johnnysaucepn/subetha-apps/branch/master)
+[![AppVeyor tests](https://img.shields.io/appveyor/tests/johnnysaucepn/subetha-apps/master)](https://ci.appveyor.com/project/johnnysaucepn/subetha-apps/build/tests?branch=master)
 [![Coverlet code coverage](https://img.shields.io/codecov/c/github/johnnysaucepn/SubEtha.Apps/master)](https://codecov.io/gh/johnnysaucepn/SubEtha.Apps)
 
 This is a set of .NET Core apps that use the [![SubEtha libraries](https://github.com/johnnysaucepn/SubEtha)] for parsing and consuming Elite: Dangerous Player's Journal log events and key bindings.
