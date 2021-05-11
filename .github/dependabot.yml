@@ -17,3 +17,6 @@ updates:
   - dependency-name: Npgsql.EntityFrameworkCore*
     versions:
     - ">= 5.x"
+  - dependency-name: Microsoft.VisualStudio.Web.*
+    versions:
+    - ">= 5.x"
