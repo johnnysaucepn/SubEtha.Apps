@@ -41,8 +41,8 @@ namespace Howatworks.Thumb.Core
             return new Dictionary<string, string>
             {
                 ["JournalFolder"] = _defaultJournalPath,
-                ["JournalPattern"] = "Journal.*.log",
-                ["RealTimeFilenames"] = "Status.json;Market.json;Outfitting.json;Shipyard.json;NavRoute.json;ModulesInfo.json;Cargo.json",
+                ["LogPattern"] = "Journal.*.log",
+                ["LiveFilenames"] = "Status.json;Market.json;Outfitting.json;Shipyard.json;NavRoute.json;ModulesInfo.json;Cargo.json",
                 ["UpdateInterval"] = new TimeSpan(0, 0, 5).ToString(),
                 ["BindingsFolder"] = _defaultBindingsPath,
                 ["ActiveWindowTitle"] = "Elite - Dangerous (CLIENT)",
