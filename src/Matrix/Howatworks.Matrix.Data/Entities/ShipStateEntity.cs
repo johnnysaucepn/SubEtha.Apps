@@ -14,7 +14,7 @@ namespace Howatworks.Matrix.Data.Entities
         public string GameVersion { get; set; }
         public string CommanderName { get; set; }
 
-        public int ShipId { get; set; }
+        public long ShipId { get; set; }
         public string Type { get; set; }
 
         public string Name { get; set; }

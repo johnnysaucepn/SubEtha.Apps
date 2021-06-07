@@ -7,7 +7,7 @@ namespace Howatworks.Matrix.Domain
         public DateTimeOffset TimeStamp { get; set; }
 
         public string Type { get; set; }
-        public int ShipId { get; set; }
+        public long ShipId { get; set; }
         public string Name { get; set; }
         public string Ident { get; set; }
         public bool? ShieldsUp { get; set; }

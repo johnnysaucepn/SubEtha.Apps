@@ -2,7 +2,7 @@
 {
     public interface IShipState : IState
     {
-        int ShipId { get; set; }
+        long ShipId { get; set; }
         string Type { get; set; }
         string Name { get; set; }
         string Ident { get; set; }
