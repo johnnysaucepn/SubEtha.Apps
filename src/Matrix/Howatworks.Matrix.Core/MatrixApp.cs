@@ -98,8 +98,7 @@ namespace Howatworks.Matrix.Core
             _ship.SubscribeTo(publication);
             _session.SubscribeTo(publication);
 
-            _logMonitor.JournalFileWatch.Subscribe(
-                e =>
+            _logMonitor.JournalFileWatch.Subscribe(e =>
                 {
                     switch (e.Action)
                     {
@@ -112,8 +111,7 @@ namespace Howatworks.Matrix.Core
                     }
                 });
 
-                _location.Observable
-                .Subscribe(l =>
+            _location.Observable.Subscribe(l =>
                 {
                     if (_location.TryBuildUri(_gameContext.CommanderName, _gameContext.GameVersion, out var uri))
                     {
@@ -122,8 +120,7 @@ namespace Howatworks.Matrix.Core
                     }
                 });
 
-            _ship.Observable
-                .Subscribe(s =>
+            _ship.Observable.Subscribe(s =>
                 {
                     if (_ship.TryBuildUri(_gameContext.CommanderName, _gameContext.GameVersion, out var uri))
                     {
@@ -132,8 +129,7 @@ namespace Howatworks.Matrix.Core
                     }
                 });
 
-            _session.Observable
-                .Subscribe(s =>
+            _session.Observable.Subscribe(s =>
                 {
                     if (_session.TryBuildUri(_gameContext.CommanderName, _gameContext.GameVersion, out var uri))
                     {
@@ -142,8 +138,7 @@ namespace Howatworks.Matrix.Core
                     }
                 });
 
-            Updates
-                .Subscribe(x =>
+            Updates.Subscribe(x =>
                 {
                     var lastEntry = x.Value;
                     var lastChecked = x.Timestamp;
