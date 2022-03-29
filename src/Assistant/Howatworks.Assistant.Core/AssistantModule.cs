@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Howatworks.Assistant.Core.ControlSimulators;
 using Howatworks.Assistant.WebSockets;
-using Howatworks.SubEtha.Bindings;
+using Howatworks.SubEtha.Bindings.Monitor;
 
 namespace Howatworks.Assistant.Core
 {
@@ -17,6 +17,7 @@ namespace Howatworks.Assistant.Core
             builder.RegisterType<GameControlBridge>().AsSelf().SingleInstance();
             builder.RegisterType<InputSimulatorKeyboardSimulator>().As<IVirtualKeyboardSimulator>().SingleInstance();
             builder.RegisterType<InputSimulatorMouseSimulator>().As<IVirtualMouseSimulator>().SingleInstance();
+            builder.RegisterType<BindingMonitor>().As<IBindingMonitor>().SingleInstance();
             builder.RegisterType<DynamicBindingMapper>().As<IBindingMapper>().SingleInstance();
             builder.RegisterType<AssistantMessageParser>().AsSelf().SingleInstance();
         }

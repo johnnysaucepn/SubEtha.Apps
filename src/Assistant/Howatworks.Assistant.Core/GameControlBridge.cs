@@ -8,6 +8,7 @@ using Howatworks.SubEtha.Bindings;
 using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
+using Howatworks.SubEtha.Bindings.Monitor;
 
 namespace Howatworks.Assistant.Core
 {
@@ -30,12 +31,7 @@ namespace Howatworks.Assistant.Core
             _mouse = mouse;
             _activeWindowTitle = configuration["ActiveWindowTitle"];
 
-            SelectedBindingsChanged =
-                Observable.FromEventPattern(
-                    h => _bindingMapper.BindingsChanged += h,
-                    h => _bindingMapper.BindingsChanged -= h
-                )
-                .Select(_ => Unit.Default);
+            SelectedBindingsChanged = _bindingMapper.BindingsChanged;
         }
 
         public IReadOnlyCollection<BoundButton> GetAllBoundButtons()

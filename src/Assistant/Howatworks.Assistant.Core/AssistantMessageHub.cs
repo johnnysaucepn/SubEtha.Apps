@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Howatworks.Assistant.Core.Messages;
 using Howatworks.Assistant.WebSockets;
 using Howatworks.SubEtha.Bindings;
+using Howatworks.SubEtha.Bindings.Monitor;
 using log4net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;

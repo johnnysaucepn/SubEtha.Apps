@@ -7,8 +7,9 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.2.0" />
-    <PackageReference Include="Howatworks.SubEtha.Bindings" Version="0.8.0" />
-    <PackageReference Include="Howatworks.SubEtha.Journal" Version="0.8.0" />
+    <PackageReference Include="Howatworks.SubEtha.Bindings" Version="0.9.0-odyssey0021" />
+    <PackageReference Include="Howatworks.SubEtha.Bindings.Monitor" Version="0.9.0-odyssey0021" />
+    <PackageReference Include="Howatworks.SubEtha.Journal" Version="0.9.0-odyssey0021" />
     <PackageReference Include="InputSimulatorStandard" Version="1.0.0" />
     <PackageReference Include="log4net" Version="2.0.12" />
     <PackageReference Include="PInvoke.User32" Version="0.7.104" />

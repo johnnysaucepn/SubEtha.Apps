@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Howatworks.Assistant.Core.ControlSimulators;
 using Xunit;
 using Howatworks.SubEtha.Bindings;
+using Howatworks.SubEtha.Bindings.Monitor;
 
 namespace Howatworks.Assistant.Core.Test
 {

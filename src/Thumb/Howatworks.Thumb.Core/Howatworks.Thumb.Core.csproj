@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.2.0" />
-    <PackageReference Include="Howatworks.SubEtha.Monitor" Version="0.8.0" />
+    <PackageReference Include="Howatworks.SubEtha.Monitor" Version="0.9.0-odyssey0021" />
     <PackageReference Include="log4net" Version="2.0.12" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
