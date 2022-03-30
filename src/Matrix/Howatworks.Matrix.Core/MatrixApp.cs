@@ -91,7 +91,8 @@ namespace Howatworks.Matrix.Core
             var source = new JournalEntrySource(_parser, startTime, _logMonitor, _liveMonitor);
 
             var publisher = new JournalEntryPublisher(source);
-            var publication = publisher.Observable.Publish();
+
+            var publication = publisher.Observable.Where(x => x.IsSuccess).Select(x => x.Value).Publish();
 
             _gameContext.SubscribeTo(publication);
             _location.SubscribeTo(publication);
