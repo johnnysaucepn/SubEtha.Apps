@@ -69,7 +69,8 @@ namespace Howatworks.Assistant.Core
                 var source = new JournalEntrySource(_parser, startTime, _monitor);
 
                 var publisher = new JournalEntryPublisher(source);
-                var publication = publisher.Observable.Publish();
+
+                var publication = publisher.Observable.Where(x => x.IsSuccess).Select(x => x.Value).Publish();
 
                 _statusManager.SubscribeTo(publication);
                 _processor.StartListening(token);
