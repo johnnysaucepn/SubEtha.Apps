@@ -7,7 +7,7 @@ namespace Howatworks.Matrix.Wpf
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(c => TrayIconViewModel.Create(c.Resolve<MatrixApp>()));
+            builder.Register((MatrixApp app) => TrayIconViewModel.Create(app));
 
             builder.RegisterType<AuthenticationDialog>().AsSelf().SingleInstance();
             builder.RegisterType<AuthenticationDialogViewModel>().AsSelf().SingleInstance();

@@ -7,7 +7,7 @@ namespace Howatworks.Assistant.Wpf
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(c => TrayIconViewModel.Create(c.Resolve<AssistantApp>()));
+            builder.Register((AssistantApp app) => TrayIconViewModel.Create(app));
         }
     }
 }
