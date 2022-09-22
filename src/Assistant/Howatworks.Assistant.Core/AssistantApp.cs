@@ -28,7 +28,6 @@ namespace Howatworks.Assistant.Core
         private readonly Subject<DateTimeOffset> _updateSubject = new Subject<DateTimeOffset>();
 
         public IObservable<Timestamped<DateTimeOffset>> Updates => _updateSubject
-                                                                    .Throttle(TimeSpan.FromSeconds(5))
                                                                     .Timestamp()
                                                                     .AsObservable();
 
@@ -80,7 +79,12 @@ namespace Howatworks.Assistant.Core
                 Updates
                     .Subscribe(e =>
                     {
-                        var lastEntry = e.Value;
+                        var lastEntry = _state.LastEntrySeen ?? DateTimeOffset.MinValue;
+                        var thisEntry = e.Value;
+                        if (thisEntry > lastEntry)
+                        {
+                            lastEntry = thisEntry;
+                        }
                         var lastChecked = e.Timestamp;
                         Log.Info($"Updated at {lastChecked}, last entry stamped {lastEntry}");
                         _state.Update(lastChecked, lastEntry);
